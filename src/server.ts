@@ -2,11 +2,12 @@ import express, { type Request, type Response } from 'express';
 // import { createClient } from 'redis';
 import "dotenv/config";
 // import sendEmail from './sendEmail.js';
-import emailQueue from './queue/emailQueue.js';
-import "./worker/email.worker.js";
-import { serverAdapter } from './bullmq.js';
+// import emailQueue from './queue/emailQueue.js';
+// import "./worker/email.worker.js";
+// import { serverAdapter } from './bullmq.js';
 
 const app = express();
+
 app.use(express.json());
 
 //redis connection
@@ -59,24 +60,31 @@ app.use(express.json());
 // })
 
 
-app.post("/send-email",async(req: Request, res: Response)=>{
-    // await sendEmail(req.body);
+// app.post("/send-email",async(req: Request, res: Response)=>{
+//     // await sendEmail(req.body);
 
-    await emailQueue.add('send-email-job', req.body, {
-        attempts: 3,
-        backoff: {
-            type: "exponential",
-            delay: 5000,
-        },
-        delay:10000
+//     await emailQueue.add('send-email-job', req.body, {
+//         attempts: 3,
+//         backoff: {
+//             type: "exponential",
+//             delay: 5000,
+//         },
+//         delay:10000
+//     });
+//     return res.json("Email sent successfully");
+// }
+// )
+
+
+// app.use("/admin/queues", serverAdapter.getRouter());
+
+app.get("/", async (req: Request, res: Response) => {
+    res.json({
+        success: true,
+        message: "Server is running"
     });
-    return res.json("Email sent successfully");
-}
-)
+});
 
-
-app.use("/admin/queues", serverAdapter.getRouter());
-
-app.listen(3000, () => {
+app.listen(3000, ()=>{
     console.log("Server is running on port 3000");
 });

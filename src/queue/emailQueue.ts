@@ -1,9 +1,9 @@
-import { Queue } from "bullmq";
+// import { Queue } from "bullmq";
 
-const emailQueue = new Queue("email-queue",{
-    connection:{
-        url: process.env.REDIS_URL as string
-    }
-})
+// const emailQueue = new Queue("email-queue",{
+//     connection:{
+//         url: process.env.REDIS_URL as string
+//     }
+// })
 
-export default emailQueue;
+// export default emailQueue;

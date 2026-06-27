@@ -87,7 +87,7 @@ app.get("/", async (req: Request, res: Response) => {
 
 const user:{name: string, age: number, email: string} = {
     name: "shahriar",
-    age: "22",
+    age: 22,
     email: "shahriar@gmail.com"
 }
 

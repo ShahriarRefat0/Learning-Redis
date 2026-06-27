@@ -1,0 +1,23 @@
+name: Code quality test
+on: 
+    push: 
+        branches: 
+            - main
+
+jobs:
+    code-quality:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
+
+            - name: Node.js setup
+              uses: actions/setup-node@v4
+              with:
+                node-version: 24
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Run code quality tests
+              run: npm run build

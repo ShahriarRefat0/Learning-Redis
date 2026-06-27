@@ -1,0 +1,12 @@
+// import { createBullBoard } from "@bull-board/api";
+export {};
+// import { BullMQAdapter } from "@bull-board/api/bullMQAdapter";
+// import { ExpressAdapter } from "@bull-board/express";
+// import emailQueue from "./queue/emailQueue.js";
+// export const serverAdapter = new ExpressAdapter();
+// serverAdapter.setBasePath("/admin/queues");
+// createBullBoard({
+//   queues: [new BullMQAdapter(emailQueue)],
+//   serverAdapter,
+// });
+//# sourceMappingURL=bullmq.js.map
